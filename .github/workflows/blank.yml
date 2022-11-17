@@ -1,7 +1,8 @@
 # This is a basic workflow to help you get started with Actions
- run:Run markdown lint
-       npm install remark-cli remark-preset-lint-consistent
-       npx remark . --use remark-preset-lint-consistent --frail
+ - name: Run markdown lint
+ run:
+   npm install remark-cli remark-preset-lint-consistent
+   npx remark . --use remark-preset-lint-consistent --frail
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -25,11 +26,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: Run markdown lint
-        run: |
-          npm install remark-cli remark-preset-lint-consistent
-          npx remark . --use remark-preset-lint-consistent --frail
-
       - uses: actions/upload-artifact@main
         with:
           name: remark-lint-report
